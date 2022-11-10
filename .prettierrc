@@ -1,0 +1,15 @@
+{
+    "bracketSpacing": true,
+    "jsxBracketSameLine": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+  
+    "importOrder": [
+      "^((?!@|.).)*$",
+      "^@((?!env).)*$",
+      "^[./]"
+    ],
+  
+    "importOrderSeparation": true
+}
+  
