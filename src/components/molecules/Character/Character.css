@@ -1,0 +1,15 @@
+.planetContainer {
+  width: 83;
+  height: 24;
+  border-radius: 6px;
+  padding: 3px 8px;
+  gap: 4;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12.5px);
+  align-items: center;
+}
+.locationIcon {
+  color: white;
+  width: 1rem;
+  height: 1rem;
+}
