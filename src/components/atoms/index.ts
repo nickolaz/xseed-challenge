@@ -1,3 +1,4 @@
 import Card from './Card';
+import SkeletonLoader from './SkeletonLoader';
 
-export { Card };
+export { Card, SkeletonLoader };
