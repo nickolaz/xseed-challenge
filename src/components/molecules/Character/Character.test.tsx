@@ -22,10 +22,10 @@ describe('Tests Character Component', () => {
           character={mockCharacter}
           updateFavorites={mockHandler}></Character>,
       );
-      const nameInScreen = screen.getByText(
+      const genderInScreen = screen.getByText(
         `${mockCharacter.gender} | ${mockCharacter.birth_year}`,
       );
-      expect(nameInScreen).toBeDefined();
+      expect(genderInScreen).toBeDefined();
     }),
     test('render a Character planet', () => {
       render(
@@ -33,8 +33,8 @@ describe('Tests Character Component', () => {
           character={mockCharacter}
           updateFavorites={mockHandler}></Character>,
       );
-      const nameInScreen = screen.getByText(mockCharacter.planet!);
-      expect(nameInScreen).toBeDefined();
+      const planetInScreen = screen.getByText(mockCharacter.planet!);
+      expect(planetInScreen).toBeDefined();
     }),
     test('click buttom', () => {
       const component = render(
