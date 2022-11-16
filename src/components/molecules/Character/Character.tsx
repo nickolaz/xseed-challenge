@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+
 import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
 import { Box, Divider, Typography } from '@mui/material';
 
@@ -12,7 +14,10 @@ interface CharacterProps {
 }
 
 const Character = ({ character, updateFavorites }: CharacterProps) => {
-  const handleFavorite = () => updateFavorites(character);
+  const handleFavorite = useCallback(
+    () => updateFavorites(character),
+    [updateFavorites],
+  );
 
   return (
     <>
