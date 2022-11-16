@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { GetPeople, GetPlanet } from '../../../services';
@@ -13,7 +13,7 @@ const CharactersPage = () => {
   const { favorites } = useSelector((state: RootStoreType) => state.favorites);
   const dispatch = useDispatch();
 
-  const getCharacters = async () => {
+  const getCharacters = useCallback(async () => {
     try {
       setLoading(true);
       const peopleResponse = await GetPeople();
@@ -38,6 +38,12 @@ const CharactersPage = () => {
           } else {
             character.planet = findPlanet.name;
           }
+          const isFavorteCharacter = favorites.find(
+            (favorite) => favorite.name === character.name,
+          );
+          if (isFavorteCharacter) {
+            character.isFavorite = true;
+          }
           charactersResult.push(character);
         }
         setCharacters(charactersResult);
@@ -47,35 +53,40 @@ const CharactersPage = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     getCharacters();
   }, []);
 
-  const updateFavorites = (character: CharacterType) => {
-    const isFavorite = !character.isFavorite;
-    const _favorites: CharacterType[] = [...favorites];
-    if (isFavorite) {
-      _favorites.push(character);
-    } else {
-      const index = _favorites.indexOf(character);
-      if (index > -1) {
-        _favorites.splice(index, 1);
-      }
-    }
-    if (characters) {
-      let _characters: CharacterType[] = characters.map((value) => {
-        if (value.name === character.name) {
-          const _value = { ...value, isFavorite: isFavorite };
-          return _value;
+  const updateFavorites = useCallback(
+    (character: CharacterType) => {
+      const isFavorite = !character.isFavorite;
+      const _favorites: CharacterType[] = [...favorites];
+      if (isFavorite) {
+        _favorites.push({ ...character, isFavorite });
+      } else {
+        const index = _favorites.findIndex(
+          (favorite) => favorite.name === character.name,
+        );
+        if (index > -1) {
+          _favorites.splice(index, 1);
         }
-        return value;
-      });
-      setCharacters(_characters);
-    }
-    dispatch(favoritesActions.updateFavorites(_favorites));
-  };
+      }
+      if (characters) {
+        let _characters: CharacterType[] = characters.map((value) => {
+          if (value.name === character.name) {
+            const _value = { ...value, isFavorite: isFavorite };
+            return _value;
+          }
+          return value;
+        });
+        setCharacters(_characters);
+      }
+      dispatch(favoritesActions.updateFavorites(_favorites));
+    },
+    [favorites, characters],
+  );
 
   return (
     <CharactersTemplate
