@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const urlBase = 'https://swapi.dev/api';
+// const urlBase = 'https://swapi.dev/api';
+const urlBase = 'https://swapi.py4e.com/api/';
 
 const defaultHeaders = {
   Accept: 'application/json',

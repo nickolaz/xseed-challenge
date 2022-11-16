@@ -1,10 +1,7 @@
+import { MemoryRouter } from 'react-router-dom';
+
 import '@testing-library/jest-dom/extend-expect';
-import {
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import {
   mockCharacter,
@@ -50,7 +47,7 @@ jest.mock('axios', () => {
 jest.mock('react-redux', () => {
   return {
     useSelector: () => ({
-      favorites: [],
+      favorites: [{ ...mockCharacter, isFavorite: true }],
     }),
     useDispatch: () => jest.fn(),
   };
@@ -58,7 +55,11 @@ jest.mock('react-redux', () => {
 
 describe('Tests CharactersPage Component', () => {
   test('render a CharactersPage', async () => {
-    const component = render(<CharactersPage />);
+    const component = render(
+      <MemoryRouter initialEntries={['/']}>
+        <CharactersPage />
+      </MemoryRouter>,
+    );
     await waitFor(() => {
       //Check if the Data of character is render
       const nameInScreen = screen.getAllByText(mockCharacter.name);
@@ -73,7 +74,11 @@ describe('Tests CharactersPage Component', () => {
     });
   }),
     test('CharactersPage click to check favorite', async () => {
-      const component = render(<CharactersPage />);
+      const component = render(
+        <MemoryRouter initialEntries={['/']}>
+          <CharactersPage />
+        </MemoryRouter>,
+      );
       await waitFor(() => {
         const btn = component.getAllByRole('button');
         //fire click in the last button
@@ -81,12 +86,15 @@ describe('Tests CharactersPage Component', () => {
       });
     }),
     test('CharactersPage click to uncheck favorite', async () => {
-      const component = render(<CharactersPage />);
+      const component = render(
+        <MemoryRouter initialEntries={['/']}>
+          <CharactersPage />
+        </MemoryRouter>,
+      );
       await waitFor(() => {
         const btn = component.getAllByRole('button');
         //fire click in the last button
-        fireEvent.click(btn[btn.length - 1]);
-        fireEvent.click(btn[btn.length - 1]);
+        fireEvent.click(btn[0]);
       });
     });
 });
