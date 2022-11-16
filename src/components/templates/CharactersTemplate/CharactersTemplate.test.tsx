@@ -1,3 +1,5 @@
+import { MemoryRouter } from 'react-router-dom';
+
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render, screen } from '@testing-library/react';
 
@@ -9,12 +11,14 @@ const mockHandler = jest.fn();
 describe('Tests CharactersTemplate Component', () => {
   test('render a CharactersTemplate loading 10 CharacterSkeleton', () => {
     const component = render(
-      <CharactersTemplate
-        error={''}
-        characteres={[]}
-        loading={true}
-        updateFavorites={mockHandler}
-      />,
+      <MemoryRouter initialEntries={['/']}>
+        <CharactersTemplate
+          error={''}
+          characteres={[]}
+          loading={true}
+          updateFavorites={mockHandler}
+        />
+      </MemoryRouter>,
     );
     const countSkeletons =
       component.container.getElementsByClassName('skeletonStyle');
@@ -24,12 +28,14 @@ describe('Tests CharactersTemplate Component', () => {
   }),
     test('render a CharactersTemplate show Character', () => {
       const component = render(
-        <CharactersTemplate
-          error={''}
-          characteres={[mockCharacter]}
-          loading={false}
-          updateFavorites={mockHandler}
-        />,
+        <MemoryRouter initialEntries={['/']}>
+          <CharactersTemplate
+            error={''}
+            characteres={[mockCharacter]}
+            loading={false}
+            updateFavorites={mockHandler}
+          />
+        </MemoryRouter>,
       );
       // Get the data of MockCharacter
       const nameInScreen = screen.getByText(mockCharacter.name);
@@ -44,12 +50,14 @@ describe('Tests CharactersTemplate Component', () => {
     }),
     test('click buttom in a element', () => {
       const component = render(
-        <CharactersTemplate
-          error={''}
-          characteres={[mockCharacter]}
-          loading={false}
-          updateFavorites={mockHandler}
-        />,
+        <MemoryRouter initialEntries={['/']}>
+          <CharactersTemplate
+            error={''}
+            characteres={[mockCharacter]}
+            loading={false}
+            updateFavorites={mockHandler}
+          />
+        </MemoryRouter>,
       );
       //Test click the button in an element of a List
       const btn = component.getByRole('button');
@@ -59,12 +67,14 @@ describe('Tests CharactersTemplate Component', () => {
     test('Test show the error', () => {
       const errorMsg = 'Characters Not Found';
       const component = render(
-        <CharactersTemplate
-          error={errorMsg}
-          characteres={[]}
-          loading={false}
-          updateFavorites={mockHandler}
-        />,
+        <MemoryRouter initialEntries={['/']}>
+          <CharactersTemplate
+            error={errorMsg}
+            characteres={[]}
+            loading={false}
+            updateFavorites={mockHandler}
+          />
+        </MemoryRouter>,
       );
       const errorMsgInScreen = screen.getByText(errorMsg);
       expect(errorMsgInScreen).toBeDefined();
