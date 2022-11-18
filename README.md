@@ -13,18 +13,8 @@ This project is a fronEnd Challenge for Xseed
 *   React Router
 *   Material UI
 
-# 📲 Screenshots
-## - Characters 
-<img src="screenShot/1.jpeg"></img>
-
-## - Favorites
-<img src="screenShot/2.jpeg"></img>
-
-## - Menu
-<img src="screenShot/3.jpeg"></img>
-
-### - Author
+## 🧑🏻‍💻 Author
 [@nickolaz](https://github.com/nickolaz)
 
-### - License
+## 📝 License
 MIT
