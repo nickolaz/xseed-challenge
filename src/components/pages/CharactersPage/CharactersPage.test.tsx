@@ -80,9 +80,10 @@ describe('Tests CharactersPage Component', () => {
         </MemoryRouter>,
       );
       await waitFor(() => {
-        const btn = component.getAllByRole('button');
+        const favBtn =
+          component.container.getElementsByClassName('iconButtonStyle');
         //fire click in the last button
-        fireEvent.click(btn[btn.length - 1]);
+        fireEvent.click(favBtn[favBtn.length - 1]);
       });
     }),
     test('CharactersPage click to uncheck favorite', async () => {
@@ -92,9 +93,9 @@ describe('Tests CharactersPage Component', () => {
         </MemoryRouter>,
       );
       await waitFor(() => {
-        const btn = component.getAllByRole('button');
-        //fire click in the last button
-        fireEvent.click(btn[0]);
+        const favBtn =
+          component.container.getElementsByClassName('iconButtonStyle');
+        fireEvent.click(favBtn[0]);
       });
     });
 });
