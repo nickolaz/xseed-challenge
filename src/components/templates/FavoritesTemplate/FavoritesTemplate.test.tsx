@@ -44,8 +44,8 @@ describe('Tests FavoritesTemplate Component', () => {
         </MemoryRouter>,
       );
       //Test click the button in an element of a List
-      const btn = component.getByRole('button');
-      fireEvent.click(btn);
+      const buttons = component.getAllByRole('button');
+      fireEvent.click(buttons[buttons.length - 1]);
       expect(mockHandler).toBeCalledTimes(1);
     }),
     test('Test show the error', () => {

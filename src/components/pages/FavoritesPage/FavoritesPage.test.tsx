@@ -9,9 +9,7 @@ import FavoritesPage from './FavoritesPage';
 jest.mock('react-redux', () => {
   return {
     useSelector: () => ({
-      favorites: [
-        { ...mockCharacter, isFavorite: true },
-      ],
+      favorites: [{ ...mockCharacter, isFavorite: true }],
     }),
     useDispatch: () => jest.fn(),
   };
@@ -45,8 +43,9 @@ describe('Tests FavoritesPage Component', () => {
       );
       await waitFor(() => {
         //Test click the button in an element of a List
-        const btn = component.getAllByRole('button');
-        fireEvent.click(btn[0]);
+        const favBtn =
+          component.container.getElementsByClassName('iconButtonStyle');
+        fireEvent.click(favBtn[0]);
       });
     }),
     test('Test Handle Search', async () => {

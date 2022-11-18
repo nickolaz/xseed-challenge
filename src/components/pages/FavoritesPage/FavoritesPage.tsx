@@ -14,7 +14,7 @@ const FavoritesPage = () => {
   const handleSearch = useCallback(
     (searchValue: string) => {
       if (searchValue !== '') {
-        const searchItems = _favorites?.filter((favorite) => {
+        const searchItems = favorites?.filter((favorite) => {
           return (
             favorite.name.toLowerCase().includes(searchValue.toLowerCase()) ||
             favorite.gender.toLowerCase().includes(searchValue.toLowerCase()) ||

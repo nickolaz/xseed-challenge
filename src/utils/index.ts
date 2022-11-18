@@ -1,4 +1,4 @@
-import { ERROR_MSG } from './Constants';
+import { DRAWER_WIDTH, ERROR_MSG } from './Constants';
 import {
   mockCharacter,
   mockPeopleResponse,
@@ -16,6 +16,7 @@ import {
 } from './Types';
 
 export {
+  DRAWER_WIDTH,
   ERROR_MSG,
   mockCharacter,
   mockPeopleResponse,
