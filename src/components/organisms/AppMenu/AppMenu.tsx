@@ -42,7 +42,7 @@ const AppMenu = ({ children, title }: AppMenuProps) => {
     }),
     [],
   );
-  
+
   return (
     <Box marginBottom={5} display="flex" flexDirection="column">
       <AppBar position="fixed" className="appMenuStyle" elevation={0}>
