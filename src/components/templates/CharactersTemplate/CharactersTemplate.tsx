@@ -18,13 +18,14 @@ const CharactersTemplate = ({
 }: CharactersTemplateProps) => {
   return (
     <Box marginX={2.5}>
-      <AppMenu />
-      <ErrorMsg error={error} />
-      <CharactersList
-        characteres={characteres}
-        loading={loading}
-        updateFavorites={updateFavorites}
-      />
+      <AppMenu title="Characters">
+        <ErrorMsg error={error} />
+        <CharactersList
+          characteres={characteres}
+          loading={loading}
+          updateFavorites={updateFavorites}
+        />
+      </AppMenu>
     </Box>
   );
 };
