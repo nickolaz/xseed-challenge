@@ -1,0 +1,11 @@
+.appMenuStyle {
+  background-color: #1e1e1e !important;
+}
+.iconStyle {
+  color: white !important;
+}
+.titleStyle {
+  flex-grow: 1;
+  color: white;
+  text-align: center;
+}
