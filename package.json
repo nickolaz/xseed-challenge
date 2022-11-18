@@ -3,6 +3,11 @@
   "name": "xseed-challenge",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Nicolas Eduardo Ayala Koy",
+    "email": "nicoayalakoy@gmail.com",
+    "url": "https://github.com/nickolaz"
+  },
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
