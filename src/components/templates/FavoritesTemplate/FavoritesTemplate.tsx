@@ -18,13 +18,14 @@ const FavoritesTemplate = ({
 }: FavoritesTemplateProps) => {
   return (
     <Box marginX={2.5}>
-      <AppMenu />
-      <SearchBar favorites={favorites} handleSearch={handleSearch} />
-      <ErrorMsg error={error} />
-      <CharactersList
-        characteres={favorites}
-        updateFavorites={updateFavorites}
-      />
+      <AppMenu title="Favorites">
+        <SearchBar favorites={favorites} handleSearch={handleSearch} />
+        <ErrorMsg error={error} />
+        <CharactersList
+          characteres={favorites}
+          updateFavorites={updateFavorites}
+        />
+      </AppMenu>
     </Box>
   );
 };
