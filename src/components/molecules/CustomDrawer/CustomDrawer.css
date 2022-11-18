@@ -1,0 +1,19 @@
+.drawerText {
+  font-style: normal;
+  font-weight: 600 !important;
+  font-size: 22px !important;
+  line-height: 18px !important;
+  letter-spacing: 0.5px;
+  color: white;
+  margin-top: 30px !important;
+}
+.linkStyle {
+  text-decoration-line: none;
+}
+.MenuStyle {
+  background-color: #1e1e1e;
+  margin-left: 47px;
+}
+.iconStyle {
+  color: white !important;
+}
